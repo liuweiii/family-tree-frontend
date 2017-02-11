@@ -7,10 +7,11 @@ import {Person} from "../person";
 import {PersonService} from "../person.service";
 @Component({
     moduleId: module.id,
-    selector: 'persons',
-    templateUrl: 'persons.component.html',
+    selector: 'personsList',
+    templateUrl: 'personsList.component.html',
+    styleUrls: ['personsList.component.css',]
 })
-export class PersonsComponent implements OnInit {
+export class PersonsListComponent implements OnInit {
     persons: Person[];
 
     constructor(private personService: PersonService) {

@@ -6,7 +6,8 @@ export class Person{
     id: number;
     name: string;
     introduce:string;
-    father: string;
-    mother: string;
+    fatherId: string;
+    motherId: string;
+    spouseId: string;
     six: string;
 }
