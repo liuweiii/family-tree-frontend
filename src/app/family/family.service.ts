@@ -9,7 +9,7 @@ import {Family} from "./family";
 
 @Injectable()
 export class FamilyService{
-    private familiesUrl = 'http://127.0.0.1:8081/families/';
+    private familiesUrl = 'http://192.168.1.119:8081/families/';
     constructor(private http: Http){
     }
 

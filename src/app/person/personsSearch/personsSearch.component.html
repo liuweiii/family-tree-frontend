@@ -1,0 +1,6 @@
+<div>查找
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)"/>
+    <div>
+        <persons-list [persons]="persons | async"></persons-list>
+    </div>
+</div>

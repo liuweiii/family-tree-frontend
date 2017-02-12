@@ -108,7 +108,6 @@ export class FamilyDetailOption {
                     },
                     categories: [{name: 'me'}],
                     data: data,
-                    // links: [],
                     links: links
                 }
             ]

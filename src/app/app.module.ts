@@ -8,7 +8,8 @@ import {PersonsListComponent} from "./person/personsList/personsList.component";
 import {PersonService} from "./person/person.service";
 import {FamilyDetailComponent} from "./family/familyDetail/familyDetail.component";
 import {FamilyService} from "./family/family.service";
-
+import {PersonsSearchComponent} from "./person/personsSearch/personsSearch.component";
+import './rxjs-extensions';
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import {FamilyService} from "./family/family.service";
         AppComponent,
         PersonsListComponent,
         FamilyDetailComponent,
+        PersonsSearchComponent,
     ],
     providers: [
         PersonService,
