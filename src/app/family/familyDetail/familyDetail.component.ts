@@ -3,18 +3,19 @@
  */
 
 import {Component, OnInit, Input} from "@angular/core";
-import {Person} from "../person";
-import {PersonService} from "../person.service";
+
 import * as my from '../../echarts/echarts'
-import {PersonsMapOption} from "./personsMap.option";
+import {FamilyDetailOption} from "./familyDetail.option";
+import {Person} from "../../person/person";
+import {PersonService} from "../../person/person.service";
 
 @Component({
     moduleId: module.id,
-    selector: 'personsMap',
-    templateUrl: 'personsMap.component.html',
-    // styleUrls: ['personsMap.component.css',]
+    selector: 'familyDetail',
+    templateUrl: 'familyDetail.component.html',
+    // styleUrls: ['familyDetail.component.css',]
 })
-export class PersonsMapComponent implements OnInit {
+export class FamilyDetailComponent implements OnInit {
     @Input()
     me: Person;
     persons: Person[];
@@ -22,15 +23,19 @@ export class PersonsMapComponent implements OnInit {
     constructor(private personService: PersonService) {
     }
 
-    personsOption:{};
-    myCharts:any;
+    personsOption: {};
+    myCharts: any;
 
     ngOnInit(): void {
         this.myCharts = my.init(document.getElementById("myCharts"));
+        this.reload();
+    }
+
+    reload(): void {
         this.personService.getPersons()
             .then(persons => {
                 this.persons = persons;
-                this.personsOption = PersonsMapOption.generateOption(this.me,persons);
+                this.personsOption = FamilyDetailOption.generateOption(this.me, persons);
                 this.myCharts.setOption(this.personsOption);
 
             });

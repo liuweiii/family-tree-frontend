@@ -6,7 +6,7 @@ import {AppComponent} from "./app.component";
 import {HttpModule} from "@angular/http";
 import {PersonsListComponent} from "./person/personsList/personsList.component";
 import {PersonService} from "./person/person.service";
-import {PersonsMapComponent} from "./person/personsMap/personsMap.component";
+import {FamilyDetailComponent} from "./family/familyDetail/familyDetail.component";
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import {PersonsMapComponent} from "./person/personsMap/personsMap.component";
     declarations: [
         AppComponent,
         PersonsListComponent,
-        PersonsMapComponent,
+        FamilyDetailComponent,
     ],
     providers: [PersonService],
     bootstrap: [AppComponent]

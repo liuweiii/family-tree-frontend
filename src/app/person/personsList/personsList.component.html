@@ -7,6 +7,5 @@
     </li>
 </ul>
 <div *ngIf="selectedPerson">
-    <h2>{{selectedPerson.name}}</h2>
-    <personsMap [me]="selectedPerson"></personsMap>
+    <familyDetail [me]="selectedPerson"></familyDetail>
 </div>

@@ -1,9 +1,9 @@
-import {Person} from "../person";
+import {Person} from "../../person/person";
 /**
  * Created by apple on 2017/2/12.
  */
 
-export class PersonsMapOption {
+export class FamilyDetailOption {
 
     public static generateOption(me:Person,
     persons:Person[]) {
