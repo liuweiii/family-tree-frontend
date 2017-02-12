@@ -10,6 +10,7 @@ import {PersonService} from "../person.service";
 @Component({
     selector:"persons-search",
     moduleId:module.id,
+    styleUrls: ["personsSearch.component.css"],
     templateUrl:"personsSearch.component.html",
     providers: [PersonService]
 })
