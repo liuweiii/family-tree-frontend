@@ -1,6 +1,5 @@
 import {Person} from "../../person/person";
 import {Family} from "../family";
-import {forEach} from "@angular/router/src/utils/collection";
 /**
  * Created by apple on 2017/2/12.
  */
@@ -17,9 +16,9 @@ export class FamilyDetailOption {
 
     public static generateOption(me: Person,
                                  family: Family) {
-        console.log(family);
         let data = [{
             name: family.me.name,
+            person: family.me,
             category: 'me',
             x: 300,
             y: 300
@@ -29,6 +28,7 @@ export class FamilyDetailOption {
         if (family.mother) {
             data.push({
                 name: family.mother.name,
+                person: family.mother,
                 category: 'mother',
                 x: 800,
                 y: 300
@@ -48,6 +48,7 @@ export class FamilyDetailOption {
         if (family.father) {
             data.push({
                 name: family.father.name,
+                person: family.father,
                 category: 'father',
                 x: 550,
                 y: 100
@@ -66,6 +67,7 @@ export class FamilyDetailOption {
         if (family.spouse) {
             data.push({
                 name: family.spouse.name,
+                person:family.spouse,
                 category: 'spouse',
                 x: 500,
                 y: 400
@@ -87,6 +89,7 @@ export class FamilyDetailOption {
                 function(value:Person,index:number,array:Person[]) {
                     data.push({
                         name: value.name,
+                        person: value,
                         category: 'children',
                         x: 0,
                         y: 200+index*150,

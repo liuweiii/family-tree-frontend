@@ -24,11 +24,18 @@ export class FamilyDetailComponent implements OnInit {
     constructor(private familyService: FamilyService) {
     }
 
-    personsOption: {};
     myCharts: any;
+
+    //TODO 为了响应myCharts里的click事件，将本对象存储成了全局的，这是有问题的。待解决
+    static component:FamilyDetailComponent;
 
     ngOnInit(): void {
         this.myCharts = my.init(document.getElementById("myCharts"));
+        FamilyDetailComponent.component = this;
+        this.myCharts.on('click', function (params:any) {
+            // params.data.component.reload(params.data.person);
+            FamilyDetailComponent.component.reload(params.data.person);
+        });
         if(this.me) {
             this.reload(this.me);
         }
@@ -39,9 +46,7 @@ export class FamilyDetailComponent implements OnInit {
         this.familyService.getFamily(this.me.id)
             .then(family => {
                 this.family = family;
-                this.personsOption = FamilyDetailOption.generateOption(this.me, this.family);
-                this.myCharts.setOption(this.personsOption);
-
+                this.myCharts.setOption(FamilyDetailOption.generateOption(me, family));
             });
     }
 }
