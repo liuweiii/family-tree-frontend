@@ -8,4 +8,5 @@ export class Family{
     father:Person;
     mother:Person;
     spouse:Person;
+    children:Person[];
 }

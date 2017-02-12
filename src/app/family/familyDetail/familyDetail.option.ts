@@ -1,10 +1,19 @@
 import {Person} from "../../person/person";
 import {Family} from "../family";
+import {forEach} from "@angular/router/src/utils/collection";
 /**
  * Created by apple on 2017/2/12.
  */
 
 export class FamilyDetailOption {
+
+    static categories = [
+        {name:"me"},
+        {name:"father"},
+        {name:"mother"},
+        {name:"spouse"},
+        {name:"children"}
+        ];
 
     public static generateOption(me: Person,
                                  family: Family) {
@@ -20,7 +29,7 @@ export class FamilyDetailOption {
         if (family.mother) {
             data.push({
                 name: family.mother.name,
-                category: 'parent',
+                category: 'mother',
                 x: 800,
                 y: 300
             });
@@ -39,7 +48,7 @@ export class FamilyDetailOption {
         if (family.father) {
             data.push({
                 name: family.father.name,
-                category: 'parent',
+                category: 'father',
                 x: 550,
                 y: 100
             });
@@ -57,7 +66,7 @@ export class FamilyDetailOption {
         if (family.spouse) {
             data.push({
                 name: family.spouse.name,
-                category: 'me',
+                category: 'spouse',
                 x: 500,
                 y: 400
             });
@@ -71,6 +80,28 @@ export class FamilyDetailOption {
                     }
                 }
             })
+        }
+        if (family.children && family.children.length > 0) {
+
+            family.children.forEach(
+                function(value:Person,index:number,array:Person[]) {
+                    data.push({
+                        name: value.name,
+                        category: 'children',
+                        x: 0,
+                        y: 200+index*150,
+                    });
+                    links.push({
+                        source: family.me.name,
+                        target: value.name,
+                        label: {
+                            normal: {
+                                show: true,
+                                formatter: value.six == "male"?"儿子":"女儿",
+                            }
+                        }
+                    })
+                });
         }
 
         return {
@@ -106,7 +137,7 @@ export class FamilyDetailOption {
                             }
                         }
                     },
-                    categories: [{name: 'me'}],
+                    categories: FamilyDetailOption.categories,
                     data: data,
                     links: links
                 }
