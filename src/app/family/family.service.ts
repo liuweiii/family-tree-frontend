@@ -1,15 +1,15 @@
 /**
- * Created by apple on 2017/2/9.
+ * Created by apple on 2017/2/12.
  */
 
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
-import {Person} from "./person";
 import 'rxjs/add/operator/toPromise';
+import {Family} from "./family";
 
 @Injectable()
-export class PersonService{
-    private personsUrl = 'http://127.0.0.1:8081/persons/';
+export class FamilyService{
+    private familiesUrl = 'http://127.0.0.1:8081/families/';
     constructor(private http: Http){
     }
 
@@ -18,10 +18,10 @@ export class PersonService{
         return Promise.reject(error.message || error);
     }
 
-    getPersons(): Promise<Person[]>{
-        return this.http.get(this.personsUrl)
+    getFamily(myId:string): Promise<Family>{
+        return this.http.get(this.familiesUrl+myId)
             .toPromise()
-            .then(response => response.json() as Person[])
+            .then(response => response.json() as Family)
             .catch(this.handleError);
     }
 }

@@ -7,7 +7,8 @@ import {Component, OnInit, Input} from "@angular/core";
 import * as my from '../../echarts/echarts'
 import {FamilyDetailOption} from "./familyDetail.option";
 import {Person} from "../../person/person";
-import {PersonService} from "../../person/person.service";
+import {Family} from "../family";
+import {FamilyService} from "../family.service";
 
 @Component({
     moduleId: module.id,
@@ -18,9 +19,9 @@ import {PersonService} from "../../person/person.service";
 export class FamilyDetailComponent implements OnInit {
     @Input()
     me: Person;
-    persons: Person[];
+    family: Family;
 
-    constructor(private personService: PersonService) {
+    constructor(private familyService: FamilyService) {
     }
 
     personsOption: {};
@@ -28,14 +29,17 @@ export class FamilyDetailComponent implements OnInit {
 
     ngOnInit(): void {
         this.myCharts = my.init(document.getElementById("myCharts"));
-        this.reload();
+        if(this.me) {
+            this.reload(this.me);
+        }
     }
 
-    reload(): void {
-        this.personService.getPersons()
-            .then(persons => {
-                this.persons = persons;
-                this.personsOption = FamilyDetailOption.generateOption(this.me, persons);
+    reload(me:Person): void {
+        this.me = me;
+        this.familyService.getFamily(this.me.id)
+            .then(family => {
+                this.family = family;
+                this.personsOption = FamilyDetailOption.generateOption(this.me, this.family);
                 this.myCharts.setOption(this.personsOption);
 
             });

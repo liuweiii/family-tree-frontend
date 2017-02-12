@@ -1,16 +1,81 @@
 import {Person} from "../../person/person";
+import {Family} from "../family";
 /**
  * Created by apple on 2017/2/12.
  */
 
 export class FamilyDetailOption {
 
-    public static generateOption(me:Person,
-    persons:Person[]) {
-        console.log(persons);
+    public static generateOption(me: Person,
+                                 family: Family) {
+        console.log(family);
+        let data = [{
+            name: family.me.name,
+            category: 'me',
+            x: 300,
+            y: 300
+        }];
+
+        let links: any = [];
+        if (family.mother) {
+            data.push({
+                name: family.mother.name,
+                category: 'parent',
+                x: 800,
+                y: 300
+            });
+            links.push({
+                source: family.me.name,
+                target: family.mother.name,
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: "妈"
+                    }
+                }
+            })
+        }
+
+        if (family.father) {
+            data.push({
+                name: family.father.name,
+                category: 'parent',
+                x: 550,
+                y: 100
+            });
+            links.push({
+                source: family.me.name,
+                target: family.father.name,
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: "爸"
+                    }
+                }
+            })
+        }
+        if (family.spouse) {
+            data.push({
+                name: family.spouse.name,
+                category: 'me',
+                x: 500,
+                y: 400
+            });
+            links.push({
+                source: family.me.name,
+                target: family.spouse.name,
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: "配偶"
+                    }
+                }
+            })
+        }
+
         return {
             title: {
-                text: me.name+'的家族'
+                text: me.name + '的家族'
             },
             tooltip: {},
             animationDurationUpdate: 1500,
@@ -41,53 +106,10 @@ export class FamilyDetailOption {
                             }
                         }
                     },
-                    categories: [{name: 'liuwei'}],
-                    data: [{
-                        name: '节点1',
-                        category: 'liuwei',
-                        x: 300,
-                        y: 300
-                    }, {
-                        name: '节点2',
-                        category: 'liuwei',
-                        x: 800,
-                        y: 300
-                    }, {
-                        name: '节点3',
-                        x: 550,
-                        y: 100
-                    }],
+                    categories: [{name: 'me'}],
+                    data: data,
                     // links: [],
-                    links: [{
-                        source: 0,
-                        target: 1,
-                        symbolSize: [5, 20],
-                        label: {
-                            normal: {
-                                show: true,
-                                formatter: "父亲"
-                            }
-                        },
-                        lineStyle: {
-                            normal: {
-                                width: 5
-                            }
-                        }
-                    }, {
-                        source: '节点2',
-                        target: '节点1',
-                        label: {
-                            normal: {
-                                show: false
-                            }
-                        }
-                    }, {
-                        source: '节点1',
-                        target: '节点3'
-                    }, {
-                        source: '节点2',
-                        target: '节点3'
-                    }]
+                    links: links
                 }
             ]
         };

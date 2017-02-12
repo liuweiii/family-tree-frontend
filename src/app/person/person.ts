@@ -3,7 +3,7 @@
  */
 
 export class Person{
-    id: number;
+    id: string;
     name: string;
     introduce:string;
     fatherId: string;

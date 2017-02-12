@@ -7,6 +7,7 @@ import {HttpModule} from "@angular/http";
 import {PersonsListComponent} from "./person/personsList/personsList.component";
 import {PersonService} from "./person/person.service";
 import {FamilyDetailComponent} from "./family/familyDetail/familyDetail.component";
+import {FamilyService} from "./family/family.service";
 
 
 @NgModule({
@@ -20,7 +21,10 @@ import {FamilyDetailComponent} from "./family/familyDetail/familyDetail.componen
         PersonsListComponent,
         FamilyDetailComponent,
     ],
-    providers: [PersonService],
+    providers: [
+        PersonService,
+        FamilyService,
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

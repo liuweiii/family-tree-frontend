@@ -30,6 +30,8 @@ export class PersonsListComponent implements OnInit {
 
     onSelect(person:Person):void{
         this.selectedPerson = person;
-        this.familyDetail.reload();
+        if(this.familyDetail) {
+            this.familyDetail.reload(person);
+        }
     }
 }
