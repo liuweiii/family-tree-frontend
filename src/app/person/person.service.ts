@@ -9,7 +9,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class PersonService{
-    private personsUrl = 'http://127.0.0.1:8080/persons/';
+    private personsUrl = 'http://127.0.0.1:8081/persons/';
     constructor(private http: Http){
     }
 

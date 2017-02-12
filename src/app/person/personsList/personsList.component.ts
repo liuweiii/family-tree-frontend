@@ -12,6 +12,7 @@ import {PersonService} from "../person.service";
     styleUrls: ['personsList.component.css',]
 })
 export class PersonsListComponent implements OnInit {
+    selectedPerson: Person;
     persons: Person[];
 
     constructor(private personService: PersonService) {
@@ -23,5 +24,9 @@ export class PersonsListComponent implements OnInit {
             {
                 this.persons = persons
             });
+    };
+
+    onSelect(person:Person):void{
+        this.selectedPerson = person;
     }
 }

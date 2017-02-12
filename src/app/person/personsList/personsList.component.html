@@ -1,7 +1,12 @@
 <h2>Persons List</h2>
 <ul class="personsList">
-    <li *ngFor="let person of persons">
+    <li *ngFor="let person of persons"
+    (click)="onSelect(person)">
         <span class="badge">{{person.name}}</span>
         <span>{{person.introduce}}</span>
     </li>
 </ul>
+<div *ngIf="selectedPerson">
+    <h2>{{selectedPerson.name}}</h2>
+    <personsMap [me]="selectedPerson"></personsMap>
+</div>
