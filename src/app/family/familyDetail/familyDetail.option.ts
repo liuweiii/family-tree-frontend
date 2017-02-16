@@ -7,103 +7,65 @@ import {Family} from "../family";
 export class FamilyDetailOption {
 
     static categories = [
-        {name:"me"},
-        {name:"father"},
-        {name:"mother"},
-        {name:"spouse"},
-        {name:"children"}
-        ];
+        {name: "me"},
+        {name: "father"},
+        {name: "mother"},
+        {name: "spouse"},
+        {name: "children"}
+    ];
 
-    public static generateOption(me: Person,
-                                 family: Family) {
-        let data = [{
+    static data: any;
+    static links: any;
+
+    private static pushPerson(person: Person,
+                              category: string,
+                              me: Person,
+                              roleName: string,
+                              x: number,
+                              y: number) {
+        if (person) {
+            this.data.push({
+                name: person.name,
+                person: person,
+                category: category,
+                value: person.introduce,
+                x: x,
+                y: y
+            });
+            this.links.push({
+                source: me.name,
+                target: person.name,
+                label: {
+                    normal: {
+                        show: true,
+                        formatter: roleName
+                    }
+                }
+            })
+        }
+    }
+
+    public static generateOption(me: Person, family: Family) {
+        this.links = [];
+        this.data = [{
             name: family.me.name,
             person: family.me,
             category: 'me',
+            value: family.me.introduce,
             x: 300,
             y: 300
         }];
 
-        let links: any = [];
-        if (family.mother) {
-            data.push({
-                name: family.mother.name,
-                person: family.mother,
-                category: 'mother',
-                x: 800,
-                y: 300
-            });
-            links.push({
-                source: family.me.name,
-                target: family.mother.name,
-                label: {
-                    normal: {
-                        show: true,
-                        formatter: "妈"
-                    }
-                }
-            })
-        }
+        this.pushPerson(family.mother, 'mother', me, "妈", 800, 300);
+        this.pushPerson(family.father, 'father', me, '爸', 550, 100);
+        this.pushPerson(family.spouse, 'spouse', me, '配偶', 500, 800);
 
-        if (family.father) {
-            data.push({
-                name: family.father.name,
-                person: family.father,
-                category: 'father',
-                x: 550,
-                y: 100
-            });
-            links.push({
-                source: family.me.name,
-                target: family.father.name,
-                label: {
-                    normal: {
-                        show: true,
-                        formatter: "爸"
-                    }
-                }
-            })
-        }
-        if (family.spouse) {
-            data.push({
-                name: family.spouse.name,
-                person:family.spouse,
-                category: 'spouse',
-                x: 500,
-                y: 400
-            });
-            links.push({
-                source: family.me.name,
-                target: family.spouse.name,
-                label: {
-                    normal: {
-                        show: true,
-                        formatter: "配偶"
-                    }
-                }
-            })
-        }
         if (family.children && family.children.length > 0) {
-
             family.children.forEach(
-                function(value:Person,index:number,array:Person[]) {
-                    data.push({
-                        name: value.name,
-                        person: value,
-                        category: 'children',
-                        x: 0,
-                        y: 200+index*150,
-                    });
-                    links.push({
-                        source: family.me.name,
-                        target: value.name,
-                        label: {
-                            normal: {
-                                show: true,
-                                formatter: value.six == "male"?"儿子":"女儿",
-                            }
-                        }
-                    })
+                function (value: Person, index: number) {
+                    FamilyDetailOption.pushPerson(
+                        value, 'children', me,
+                        value.six == "male" ? "儿子" : "女儿", 0, 200 + index * 150);
                 });
         }
 
@@ -141,8 +103,8 @@ export class FamilyDetailOption {
                         }
                     },
                     categories: FamilyDetailOption.categories,
-                    data: data,
-                    links: links
+                    data: this.data,
+                    links: this.links
                 }
             ]
         };
