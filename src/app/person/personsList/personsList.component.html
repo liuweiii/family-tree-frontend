@@ -2,7 +2,7 @@
     <li *ngFor="let person of persons"
     (click)="onSelect(person)">
         <span class="badge">{{person.name}}</span>
-        <span>{{person.introduce}}</span>
+        <span>{{person.birthday}} —— {{person.dieday}}</span>
     </li>
 </ul>
 <div *ngIf="selectedPerson">

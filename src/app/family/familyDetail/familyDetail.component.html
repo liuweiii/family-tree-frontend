@@ -1,1 +1,5 @@
 <div id="myCharts" style="width:400px;height: 300px"></div>
+
+<div *ngIf="me" id="detail">
+    <div [innerHTML]="me.introduce"></div>
+</div>

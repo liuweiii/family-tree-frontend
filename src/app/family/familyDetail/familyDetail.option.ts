@@ -22,7 +22,10 @@ export class FamilyDetailOption {
             name: person.name,
             person: person,
             category: category,
-            value: person.introduce,
+            tooltip:{
+                show:true,
+                formatter:person.introduce
+            },
             x: x,
             y: y
         })
@@ -72,7 +75,9 @@ export class FamilyDetailOption {
             title: {
                 text: me.name + '的家族'
             },
-            tooltip: {},
+            tooltip:{
+                show:false,
+            },
             animationDurationUpdate: 1500,
             animationEasingUpdate: 'quinticInOut',
             series: [

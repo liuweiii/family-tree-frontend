@@ -13,7 +13,7 @@ import {FamilyService} from "../family.service";
     moduleId: module.id,
     selector: 'familyDetail',
     templateUrl: 'familyDetail.component.html',
-    // styleUrls: ['familyDetail.component.css',]
+    styleUrls: ['familyDetail.component.css',]
 })
 export class FamilyDetailComponent implements OnInit {
     @Input()
@@ -26,12 +26,19 @@ export class FamilyDetailComponent implements OnInit {
 
     static component: FamilyDetailComponent;
 
-    ngOnInit(): void {
-        this.myCharts = my.init(document.getElementById("myCharts"));
-        FamilyDetailComponent.component = this;
+    addEventListeners(){
         this.myCharts.on('click', function (params: any) {
             FamilyDetailComponent.component.reload(params.data.person);
         });
+    }
+
+    ngOnInit(): void {
+        this.myCharts = my.init(document.getElementById("myCharts"));
+
+        FamilyDetailComponent.component = this;
+
+        this.addEventListeners();
+
         if (this.me) {
             this.reload(this.me);
         }

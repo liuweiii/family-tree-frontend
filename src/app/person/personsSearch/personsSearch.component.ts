@@ -22,7 +22,6 @@ export class PersonsSearchComponent implements OnInit{
 
     search(term: string):void{
         this.searchTerms.next(term);
-        console.log(term);
     }
 
     ngOnInit(): void {
@@ -32,7 +31,6 @@ export class PersonsSearchComponent implements OnInit{
             .switchMap(term => term ? this.personService.searchPersons(term)
                 : Observable.of<Person[]>([]))
             .catch(error => {
-                console.log(error);
                 return Observable.of<Person[]>([]);
             })
     }
