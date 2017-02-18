@@ -10,18 +10,22 @@ import {FamilyDetailComponent} from "./family/familyDetail/familyDetail.componen
 import {FamilyService} from "./family/family.service";
 import {PersonsSearchComponent} from "./person/personsSearch/personsSearch.component";
 import './rxjs-extensions';
+import {AppRoutingModule} from "./app.routing.module";
+import {PersonCreateComponent} from "./person/personCreate/personCreate.component";
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
         HttpModule,
+        AppRoutingModule,
     ],
     declarations: [
         AppComponent,
         PersonsListComponent,
         FamilyDetailComponent,
         PersonsSearchComponent,
+        PersonCreateComponent
     ],
     providers: [
         PersonService,
