@@ -11,7 +11,7 @@ import {FamilyService} from "../family.service";
 
 @Component({
     moduleId: module.id,
-    selector: 'familyDetail',
+    selector: 'family-detail',
     templateUrl: 'detail.component.html',
     styleUrls: ['detail.component.css',]
 })
