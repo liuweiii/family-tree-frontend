@@ -10,11 +10,11 @@ import {PersonService} from "../person.service";
 @Component({
     selector:"persons-search",
     moduleId:module.id,
-    styleUrls: ["personsSearch.component.css"],
-    templateUrl:"personsSearch.component.html",
+    styleUrls: ["search.component.css"],
+    templateUrl:"search.component.html",
     providers: [PersonService]
 })
-export class PersonsSearchComponent implements OnInit{
+export class SearchComponent implements OnInit{
     persons: Observable<Person[]>;
     private searchTerms = new Subject<string>();
 

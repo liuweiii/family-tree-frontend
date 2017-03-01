@@ -6,9 +6,9 @@ import {Component} from "@angular/core";
 @Component({
     moduleId: module.id,
     selector: 'person-create',
-    templateUrl: 'personCreate.component.html',
-    styleUrls: ['personCreate.component.css'],
+    templateUrl: 'create.component.html',
+    styleUrls: ['create.component.css'],
 })
-export class PersonCreateComponent{
+export class CreateComponent{
 
 }

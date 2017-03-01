@@ -5,17 +5,17 @@
 import {Component, OnInit, Input} from "@angular/core";
 
 import * as my from '../../echarts/echarts'
-import {FamilyDetailOption} from "./familyDetail.option";
+import {DetailOption} from "./detail.option";
 import {Person} from "../../person/person";
 import {FamilyService} from "../family.service";
 
 @Component({
     moduleId: module.id,
     selector: 'familyDetail',
-    templateUrl: 'familyDetail.component.html',
-    styleUrls: ['familyDetail.component.css',]
+    templateUrl: 'detail.component.html',
+    styleUrls: ['detail.component.css',]
 })
-export class FamilyDetailComponent implements OnInit {
+export class DetailComponent implements OnInit {
     @Input()
     me: Person;
 
@@ -24,18 +24,18 @@ export class FamilyDetailComponent implements OnInit {
 
     myCharts: any;
 
-    static component: FamilyDetailComponent;
+    static component: DetailComponent;
 
     addEventListeners(){
         this.myCharts.on('click', function (params: any) {
-            FamilyDetailComponent.component.reload(params.data.person);
+            DetailComponent.component.reload(params.data.person);
         });
     }
 
     ngOnInit(): void {
         this.myCharts = my.init(document.getElementById("myCharts"));
 
-        FamilyDetailComponent.component = this;
+        DetailComponent.component = this;
 
         this.addEventListeners();
 
@@ -48,7 +48,7 @@ export class FamilyDetailComponent implements OnInit {
         this.me = me;
         this.familyService.getFamily(this.me.id)
             .then(family => {
-                this.myCharts.setOption(FamilyDetailOption.generateOption(me, family));
+                this.myCharts.setOption(DetailOption.generateOption(me, family));
             });
     }
 }

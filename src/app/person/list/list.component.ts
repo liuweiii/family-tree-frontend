@@ -4,19 +4,19 @@
 
 import {Component, ViewChild, Input} from "@angular/core";
 import {Person} from "../person";
-import {FamilyDetailComponent} from "../../family/familyDetail/familyDetail.component";
+import {DetailComponent} from "../../family/detail/detail.component";
 @Component({
     moduleId: module.id,
     selector: 'persons-list',
-    templateUrl: 'personsList.component.html',
-    styleUrls: ['personsList.component.css',]
+    templateUrl: 'list.component.html',
+    styleUrls: ['list.component.css',]
 })
-export class PersonsListComponent{
+export class ListComponent{
     selectedPerson: Person;
 
     @Input()
     persons: Person[];
-    @ViewChild(FamilyDetailComponent) familyDetail:FamilyDetailComponent;
+    @ViewChild(DetailComponent) familyDetail:DetailComponent;
 
     onSelect(person:Person):void{
         this.selectedPerson = person;

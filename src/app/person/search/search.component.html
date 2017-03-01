@@ -2,7 +2,7 @@
     <input #searchBox id="search-box"
            placeholder="请输入名称查找"
            (keyup)="search(searchBox.value)"/>
-    <div>
+    <div class="list-wrapper">
         <persons-list [persons]="persons | async"></persons-list>
     </div>
 </div>

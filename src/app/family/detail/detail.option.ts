@@ -4,7 +4,7 @@ import {Family} from "../family";
  * Created by apple on 2017/2/12.
  */
 
-export class FamilyDetailOption {
+export class DetailOption {
 
     static categories = [
         {name: "me"},
@@ -66,7 +66,7 @@ export class FamilyDetailOption {
         if (this.hasChild(family)) {
             family.children.forEach(
                 function (child: Person, index: number) {
-                    FamilyDetailOption.pushPerson(child, 'children', me,
+                    DetailOption.pushPerson(child, 'children', me,
                         child.six == "male" ? "儿子" : "女儿", 0, 200 + index * 150);
                 });
         }
@@ -106,7 +106,7 @@ export class FamilyDetailOption {
                             }
                         }
                     },
-                    categories: FamilyDetailOption.categories,
+                    categories: DetailOption.categories,
                     data: this.data,
                     links: this.links
                 }

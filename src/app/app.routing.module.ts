@@ -3,13 +3,13 @@
  */
 import {Routes, RouterModule} from "@angular/router";
 import {NgModule} from "@angular/core";
-import {PersonCreateComponent} from "./person/personCreate/personCreate.component";
-import {PersonsSearchComponent} from "./person/personsSearch/personsSearch.component";
+import {CreateComponent} from "./person/create/create.component";
+import {SearchComponent} from "./person/search/search.component";
 
 const routes: Routes = [
     {path: '', redirectTo: '/search', pathMatch: 'full'},
-    {path: 'search', component: PersonsSearchComponent},
-    {path: 'create', component: PersonCreateComponent}
+    {path: 'search', component: SearchComponent},
+    {path: 'create', component: CreateComponent}
 ];
 
 @NgModule({

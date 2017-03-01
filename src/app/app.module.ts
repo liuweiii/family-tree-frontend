@@ -4,14 +4,14 @@ import {FormsModule} from '@angular/forms'
 
 import {AppComponent} from "./app.component";
 import {HttpModule} from "@angular/http";
-import {PersonsListComponent} from "./person/personsList/personsList.component";
+import {ListComponent} from "./person/list/list.component";
 import {PersonService} from "./person/person.service";
-import {FamilyDetailComponent} from "./family/familyDetail/familyDetail.component";
+import {DetailComponent} from "./family/detail/detail.component";
 import {FamilyService} from "./family/family.service";
-import {PersonsSearchComponent} from "./person/personsSearch/personsSearch.component";
+import {SearchComponent} from "./person/search/search.component";
 import './rxjs-extensions';
 import {AppRoutingModule} from "./app.routing.module";
-import {PersonCreateComponent} from "./person/personCreate/personCreate.component";
+import {CreateComponent} from "./person/create/create.component";
 
 @NgModule({
     imports: [
@@ -22,10 +22,10 @@ import {PersonCreateComponent} from "./person/personCreate/personCreate.componen
     ],
     declarations: [
         AppComponent,
-        PersonsListComponent,
-        FamilyDetailComponent,
-        PersonsSearchComponent,
-        PersonCreateComponent
+        ListComponent,
+        DetailComponent,
+        SearchComponent,
+        CreateComponent
     ],
     providers: [
         PersonService,
