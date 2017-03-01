@@ -3,6 +3,7 @@
            placeholder="请输入名称查找"
            (keyup)="search(searchBox.value)"/>
     <div class="list-wrapper">
-        <persons-list [persons]="persons | async"></persons-list>
+        <persons-list [persons]="persons | async"
+        (selectedPerson)="onSelect($event)"></persons-list>
     </div>
 </div>

@@ -4,11 +4,11 @@
 import {Routes, RouterModule} from "@angular/router";
 import {NgModule} from "@angular/core";
 import {CreateComponent} from "./person/create/create.component";
-import {SearchComponent} from "./person/search/search.component";
+import {HomeComponent} from "./pages/home/home.component";
 
 const routes: Routes = [
-    {path: '', redirectTo: '/search', pathMatch: 'full'},
-    {path: 'search', component: SearchComponent},
+    {path: '', redirectTo: '/home', pathMatch: 'full'},
+    {path: 'home', component: HomeComponent},
     {path: 'create', component: CreateComponent}
 ];
 

@@ -12,6 +12,7 @@ import {SearchComponent} from "./person/search/search.component";
 import './rxjs-extensions';
 import {AppRoutingModule} from "./app.routing.module";
 import {CreateComponent} from "./person/create/create.component";
+import {HomeComponent} from "./pages/home/home.component";
 
 @NgModule({
     imports: [
@@ -25,7 +26,8 @@ import {CreateComponent} from "./person/create/create.component";
         ListComponent,
         DetailComponent,
         SearchComponent,
-        CreateComponent
+        CreateComponent,
+        HomeComponent
     ],
     providers: [
         PersonService,

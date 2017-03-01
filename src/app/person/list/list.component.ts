@@ -2,9 +2,8 @@
  * Created by apple on 2017/2/9.
  */
 
-import {Component, ViewChild, Input} from "@angular/core";
+import {Component, Input, Output, EventEmitter} from "@angular/core";
 import {Person} from "../person";
-import {DetailComponent} from "../../family/detail/detail.component";
 @Component({
     moduleId: module.id,
     selector: 'persons-list',
@@ -12,16 +11,11 @@ import {DetailComponent} from "../../family/detail/detail.component";
     styleUrls: ['list.component.css',]
 })
 export class ListComponent{
-    selectedPerson: Person;
-
     @Input()
     persons: Person[];
-    @ViewChild(DetailComponent) familyDetail:DetailComponent;
 
+    @Output() selectedPerson: EventEmitter<Person> = new EventEmitter();
     onSelect(person:Person):void{
-        this.selectedPerson = person;
-        if(this.familyDetail) {
-            this.familyDetail.reload(person);
-        }
+        this.selectedPerson.emit(person);
     }
 }

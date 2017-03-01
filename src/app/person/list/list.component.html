@@ -1,10 +1,8 @@
-<ul class="personsList">
+<ul class="personsList"
+    [ngClass]="{'display-none':!persons||persons?.length===0, 'display-block':persons?.length>0}">
     <li *ngFor="let person of persons"
     (click)="onSelect(person)">
         <span class="badge">{{person.name}}</span>
         <span>{{person.birthday}} —— {{person.dieday}}</span>
     </li>
 </ul>
-<div *ngIf="selectedPerson">
-    <family-detail></family-detail>
-</div>
