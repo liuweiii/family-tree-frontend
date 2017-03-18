@@ -1,8 +1,11 @@
 <div>
     <input #searchBox id="search-box"
            placeholder="请输入名称查找"
+           (blur)="onBlur()"
+           (focus)="onFocus()"
            (keyup)="search(searchBox.value)"/>
-    <div class="list-wrapper">
+    <div *ngIf="hideList==false"
+         class="list-wrapper">
         <persons-list [persons]="persons | async"
         (selectedPerson)="onSelect($event)"></persons-list>
     </div>

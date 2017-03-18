@@ -43,15 +43,12 @@
 </div>
 
 <div class="wrapper">
-    <script>
-        WebSocket ws = new WebSocket()
-    </script>
     <div class="must"></div>
     <div class="label">
         父亲
     </div>
     <div class="parent">
-        <person-search></person-search>
+        <person-search [hideListOnBlur]="true"></person-search>
     </div>
 </div>
 <div class="wrapper">
@@ -60,7 +57,7 @@
         母亲
     </div>
     <div class="parent">
-        <input class="input"/>
+        <person-search [hideListOnBlur]="true"></person-search>
     </div>
 </div>
 <div class="wrapper">
@@ -69,6 +66,6 @@
         配偶
     </div>
     <div class="parent">
-        <input class="input"/>
+        <person-search [hideListOnBlur]="true"></person-search>
     </div>
 </div>

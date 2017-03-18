@@ -2,7 +2,7 @@
  * Created by apple on 2017/2/12.
  */
 
-import {Component, OnInit, Output, EventEmitter} from "@angular/core";
+import {Component, OnInit, Output, EventEmitter, Input} from "@angular/core";
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
 import {Person} from "../person";
@@ -20,6 +20,9 @@ export class SearchComponent implements OnInit{
 
     constructor(private personService:PersonService){}
 
+
+    hideList:boolean = false;
+    @Input() hideListOnBlur: boolean = false;
     @Output() selectedPerson:EventEmitter<Person> = new EventEmitter();
 
     onSelect(person:Person){
@@ -28,6 +31,17 @@ export class SearchComponent implements OnInit{
 
     search(term: string):void{
         this.searchTerms.next(term);
+    }
+
+    onBlur(){
+        if(this.hideListOnBlur){
+            this.hideList = true;
+        }
+
+    }
+
+    onFocus(){
+        this.hideList = false;
     }
 
     ngOnInit(): void {
