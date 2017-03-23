@@ -15,7 +15,17 @@ export class ListComponent{
     persons: Person[];
 
     @Output() selectedPerson: EventEmitter<Person> = new EventEmitter();
+    @Output() selectedPage: EventEmitter<number> = new EventEmitter();
     onSelect(person:Person):void{
         this.selectedPerson.emit(person);
+    }
+
+    public totalItems:number = 175;
+    public currentPage:number = 1;
+
+    public onPageChanged(event:any):void {
+        this.selectedPage.emit(event.page);
+        console.log('Page changed to: ' + event.page);
+        console.log('Number items per page: ' + event.itemsPerPage);
     }
 }

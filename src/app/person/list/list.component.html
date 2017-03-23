@@ -6,3 +6,11 @@
         <span>{{person.birthday}} —— {{person.dieday}}</span>
     </li>
 </ul>
+
+
+<pagination [totalItems]="persons?.length"
+            [(ngModel)]="currentPage"
+            [maxSize]="3" class="pagination-sm"
+            [boundaryLinks]="true"
+            [rotate]="false"
+            (pageChanged)="onPageChanged($event)"></pagination>

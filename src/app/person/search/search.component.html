@@ -7,6 +7,8 @@
     <div *ngIf="hideList==false"
          class="list-wrapper">
         <persons-list [persons]="persons | async"
-        (selectedPerson)="onSelect($event)"></persons-list>
+                      (selectedPerson)="onSelect($event)"
+                      (selectedPage)="onSelectPage($event)"
+        ></persons-list>
     </div>
 </div>

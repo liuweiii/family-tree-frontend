@@ -45,10 +45,14 @@ export class SearchComponent implements OnInit{
     }
 
     ngOnInit(): void {
+        this.onSelectPage(1);
+    }
+
+    onSelectPage(pageIndex:number){
         this.persons = this.searchTerms
             .debounceTime(300)
             .distinctUntilChanged()
-            .switchMap(term => term ? this.personService.searchPersons(term)
+            .switchMap(term => term ? this.personService.searchPersons(term, pageIndex)
                 : Observable.of<Person[]>([]))
             .catch(error => {
                 return Observable.of<Person[]>([]);

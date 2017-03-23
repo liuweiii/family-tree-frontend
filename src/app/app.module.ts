@@ -13,6 +13,7 @@ import './rxjs-extensions';
 import {AppRoutingModule} from "./app.routing.module";
 import {CreateComponent} from "./person/create/create.component";
 import {HomeComponent} from "./pages/home/home.component";
+import {PaginationModule} from "ng2-bootstrap";
 
 @NgModule({
     imports: [
@@ -20,6 +21,7 @@ import {HomeComponent} from "./pages/home/home.component";
         FormsModule,
         HttpModule,
         AppRoutingModule,
+        PaginationModule.forRoot()
     ],
     declarations: [
         AppComponent,
